@@ -27,7 +27,7 @@ class Stock extends Asset {
     private Date dateBought;
 
     public Stock(String tickerSymbol, double priceBought, int quantity, Date dateBought) {
-        super(priceBought * quantity); // Calculate value based on price bought and quantity
+        super(priceBought * quantity); 
         this.tickerSymbol = tickerSymbol;
         this.priceBought = priceBought;
         this.quantity = quantity;
@@ -60,7 +60,7 @@ class Stock extends Asset {
 
     @Override
     public String toString() {
-        return tickerSymbol; // Return ticker symbol for JComboBox display
+        return tickerSymbol; 
     }
 }
 
@@ -81,13 +81,13 @@ class Portfolio {
 
     private void removeStockRecursively(String tickerSymbol, int index) {
         if (index >= stocks.size()) {
-            return; // Base case: stock not found
+            return; 
         }
 
         if (stocks.get(index).getTickerSymbol().equals(tickerSymbol)) {
-            stocks.remove(index); // Found the stock, remove it
+            stocks.remove(index); 
         } else {
-            removeStockRecursively(tickerSymbol, index + 1); // Recur to next index
+            removeStockRecursively(tickerSymbol, index + 1); 
         }
     }
 
@@ -115,19 +115,9 @@ class PortfolioTrackerGUI extends JFrame {
         setTitle("Portfolio Tracker");
         setSize(600, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Apply dark look and feel
-        try {
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-
         setLayout(new BorderLayout());
-        setBackground(Color.darkGray);
 
         JPanel addPanel = new JPanel(new GridLayout(5, 2));
-        addPanel.setBackground(Color.darkGray);
         addPanel.add(new JLabel("Ticker Symbol:"));
         tickerSymbolField = new JTextField();
         addPanel.add(tickerSymbolField);
@@ -142,8 +132,6 @@ class PortfolioTrackerGUI extends JFrame {
         addPanel.add(dateField);
 
         JButton addButton = new JButton("Add Stock");
-        addButton.setBackground(Color.blue);
-        addButton.setForeground(Color.white);
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -155,8 +143,6 @@ class PortfolioTrackerGUI extends JFrame {
 
         JPanel updatePanel = new JPanel(new GridLayout(1, 2));
         JButton updateButton = new JButton("Update Stocks");
-        updateButton.setBackground(Color.blue);
-        updateButton.setForeground(Color.white);
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -168,12 +154,9 @@ class PortfolioTrackerGUI extends JFrame {
 
         stockDropdown = new JComboBox<>();
         JPanel removePanel = new JPanel(new BorderLayout());
-        removePanel.setBackground(Color.darkGray);
         removePanel.add(new JLabel("Select Stock to Remove:"), BorderLayout.WEST);
         removePanel.add(stockDropdown, BorderLayout.CENTER);
         JButton removeButton = new JButton("Remove");
-        removeButton.setBackground(Color.blue);
-        removeButton.setForeground(Color.white);
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -184,10 +167,7 @@ class PortfolioTrackerGUI extends JFrame {
         add(removePanel, BorderLayout.SOUTH);
 
         JPanel totalPanel = new JPanel(new BorderLayout());
-        totalPanel.setBackground(Color.darkGray);
         totalButton = new JButton("Generate Total Assets");
-        totalButton.setBackground(Color.blue);
-        totalButton.setForeground(Color.white);
         totalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -199,8 +179,6 @@ class PortfolioTrackerGUI extends JFrame {
 
         portfolioArea = new JTextArea();
         portfolioArea.setEditable(false);
-        portfolioArea.setBackground(Color.darkGray);
-        portfolioArea.setForeground(Color.white);
         JScrollPane scrollPane = new JScrollPane(portfolioArea);
         add(scrollPane, BorderLayout.EAST);
 
@@ -227,12 +205,11 @@ class PortfolioTrackerGUI extends JFrame {
     }
 
     private void openUpdateDialog() {
-        // Create dialog
         JDialog dialog = new JDialog(this, "Update Stock", true);
         dialog.setSize(300, 150);
         dialog.setLayout(new GridLayout(3, 2));
 
-        // Add components to dialog
+
         dialog.add(new JLabel("Select Stock:"));
         JComboBox<Stock> stockDropdown = new JComboBox<>();
         for (Stock stock : portfolio.getStocks()) {
@@ -248,10 +225,7 @@ class PortfolioTrackerGUI extends JFrame {
         JTextField newPriceField = new JTextField();
         dialog.add(newPriceField);
 
-        // Add save button
         JButton saveButton = new JButton("Save");
-        saveButton.setBackground(Color.blue);
-        saveButton.setForeground(Color.white);
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -267,15 +241,14 @@ class PortfolioTrackerGUI extends JFrame {
                         double newPrice = Double.parseDouble(newPriceText);
                         selectedStock.setPriceBought(newPrice);
                     }
-                    dialog.dispose(); // Close the dialog
-                    updatePortfolioDisplay(); // Update main window display
-                    updateTotalAssets(); // Update total assets
+                    dialog.dispose(); 
+                    updatePortfolioDisplay(); 
+                    updateTotalAssets(); 
                 }
             }
         });
         dialog.add(saveButton);
 
-        // Set dialog visibility
         dialog.setVisible(true);
     }
 
