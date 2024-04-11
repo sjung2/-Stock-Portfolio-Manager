@@ -14,4 +14,4 @@ The application will be accessed through a graphical user interface (GUI), where
 **Plan:**
 The project plan for the Stock Portfolio Manager involves defining scope and requirements, designing the user interface, setting up the development environment, implementing core functionality such as stock and portfolio management, creating GUI components, integrating real-time data (optional), adding features like performance analysis and alerts, testing, documentation, deployment, gathering user feedback, and iterating based on it. This will be done over a twelve-week timeline, with tasks distributed across each phase, ensuring systematic development, thorough testing, user engagement, and continuous improvement of the application.
 
-![UML](UML.png)
+![UML](./UML.png)
