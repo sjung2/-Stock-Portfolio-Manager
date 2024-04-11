@@ -1,10 +1,10 @@
 # -Stock-Portfolio-Manager
 
-## Project Name: Stock Portfolio 
+# Project Name: Stock Portfolio 
 
-## Manager Team Name: Portfolio Technologies 
+# Manager Team Name: Portfolio Technologies 
 
-## Team Member(s): Sam Jung
+# Team Member(s): Sam Jung
 
 Abstract:
 The Stock Portfolio Manager is designed to be a no-cost, user-friendly application that gives investors the ability to efficiently manage their stock investments. The primary objective behind building this application is to create a tool that simplifies the process of tracking one’s portfolio performance, making informed investment decisions, and staying updated with real-time market data.
